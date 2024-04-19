@@ -1,0 +1,70 @@
+[include]
+    path = ~/.gitconfig.local
+[diff]
+    colorMoved = dimmed-zebra
+[core]
+    editor = nvim
+    excludesfile = ~/.gitignore_global
+    autocrlf = input
+    pager = delta
+[alias]
+    la = config --get-regexp alias # List all of your aliases
+    co = checkout # Saves a few characters on one of the most-used commands
+    b = branch
+    bd = branch -d
+    bD = branch -D
+    cm = commit -m
+    last = log -1 HEAD # Shows the last commit
+    lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) -%C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)—%an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+    lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) -%C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(bold white)—%an%C(reset)' --abbrev-commit
+    lg = !"git lg1"
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit --all # A more concise log output
+    st = status # Saves a few characters on one of the most-used commands
+    unstage = reset HEAD -- # Unstage files
+[pull]
+    rebase = true
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    syntax-theme = gruvbox-dark
+    features = unobtrusive-line-numbers decorations
+    whitespace-error-styles = 22 reverse
+    navigate = true
+[delta "unobtrusive-line-numbers"]
+    line-numbers = true
+    line-numbers-minus-style = "red"
+    line-numbers-zero-style = "#444444"
+    line-numbers-plus-style = "green"
+    line-numbers-left-format = "{nm:>4}┊"
+    line-numbers-right-format = "{np:>4}│"
+    line-numbers-left-style = blue
+    line-numbers-right-style = blue
+[delta "decorations"]
+    minus-style = bold red
+    minus-non-emph-style = bold red
+    minus-emph-style = bold red 52
+    plus-style = bold green
+    plus-non-emph-style = bold green
+    plus-emph-style = bold green 22
+    whitespace-error-style = reverse magenta
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = yellow box
+[color]
+    ui = true
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
+[color "diff"]
+    meta = 11
+    frag = magenta bold
+    func = 146 bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+[init]
+	defaultBranch = main
