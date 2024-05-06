@@ -29,6 +29,7 @@ alias zshrc="nvim ~/.zshrc"
 alias szshrc="exec zsh"
 
 eval "$(fnm env --use-on-cd)"
+# added by Webi for pyenv
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
@@ -47,7 +48,3 @@ compinit
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-
-# added by Webi for pyenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
