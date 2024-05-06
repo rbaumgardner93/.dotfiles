@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -e
+
+current_directory=$(pwd)
+base_directory=$(basename "$current_directory" | tr . _)
+
+if [ "$base_directory" != "neovim" ]; then
+		echo -e "Changing to neovim directory… \n"
+		cd "$HOME/.config/neovim"
+fi
+
+echo -e "\n Pulling the latest from master… \n"
+git pull
+
+echo -e "\n Clear the CMAKE cache… \n"
+# rm -r build/
+
+echo -e "\n Installing… \n"
+make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.config/neovim"
+make install
+
+echo -e "\n Neovim has been updated to the latest version! \n"
+nvim --version
