@@ -14,6 +14,8 @@
     lol = log --graph --decorate --pretty=oneline --abbrev-commit --all # A more concise log output
     st = status # Saves a few characters on one of the most-used commands
     unstage = reset HEAD -- # Unstage files
+
+    l = !." ~/.githelpers && pretty_git_log"
 [color]
     ui = true
 [core]
