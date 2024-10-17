@@ -26,3 +26,19 @@ function timezsh() {
     /usr/bin/time $shell -i -c exit;
   done
 }
+
+#
+# idea from Thorsten Ball (https://github.com/mrnugget/dotfiles/blob/c4624ed521d539856bcf764f04a295bb19093566/zshrc#L163)
+#
+# [f]uzzy check[o]ut
+fo() {
+  git branch --no-color --sort=committerdate --format='%(refname:short)' | fzf --header 'git checkout' | xargs git checkout
+}
+
+#
+# idea from Thorsten Ball (https://github.com/mrnugget/dotfiles/blob/c4624ed521d539856bcf764f04a295bb19093566/zshrc#L167)
+#
+# [p]ull request check[o]ut
+po() {
+  gh pr list --author "@me" | fzf --header "checkout PR" | awk '{print ${NF-5}}' | xargs git checkout
+}
