@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -e
+
+selected_slice=$(find slices core utilities -mindepth 1 -maxdepth 1 -type d | fzf --prompt="What slice would you like run tests from? ")
+
+if [[ -z $selected_slice ]]; then
+	exit 0
+fi
+
+slice_name=$(cat "$selected_slice/package.json" | jq .name | tr -d '"')
+
+if [[ $selected_slice == *"slices"* ]]; then
+	file_name=$(find "$selected_slice/client/js" -mindepth 1 -maxdepth 5 -type f | grep '.spec' | fzf --prompt="What file from $slice_name would you like to run? ")
+elif [[ $selected_slice == *"core"* ]]; then
+	file_name=$(find "$selected_slice/src" -mindepth 1 -maxdepth 2 -type f | grep '.spec' | fzf --prompt="What file from $slice_name would you like to run? ")
+else
+	file_name=$(find "$selected_slice/src" -mindepth 1 -maxdepth 4 -type f | grep '.spec' | fzf --prompt="What file from $slice_name would you like to run? ")
+fi
+
+if [[ -z $file_name ]]; then
+	exit 0
+fi
+
+base_file=$(basename "$file_name")
+
+if [[ -z $slice_name ]]; then
+	exit 0
+fi
+
+echo "Running tests from $base_file"
+
+LK_GREP="**/$base_file" yarn workspace "$slice_name" test:watch
