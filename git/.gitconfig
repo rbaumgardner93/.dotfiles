@@ -1,21 +1,29 @@
 [include]
     path = ~/.gitconfig.local
 [alias]
-    la = config --get-regexp alias # List all of your aliases
-    co = checkout # Saves a few characters on one of the most-used commands
+    aa = add --all
     b = branch
-    bd = branch -d
     bD = branch -D
+    bd = branch -d
+    ci = commit --verbose
     cm = commit -m
+    co = checkout # Saves a few characters on one of the most-used commands
+    dc = diff --find-copies-harder --cached
+    di = diff --find-copies-harder
+    ds = diff --stat=160,120
+    head = !"git r -1"
+    h = !"git head"
+    l = !." ~/.githelpers && pretty_git_log"
+    la = config --get-regexp alias # List all of your aliases
     last = log -1 HEAD # Shows the last commit
+    lg = !"git lg1"
     lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) -%C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)—%an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
     lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) -%C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(bold white)—%an%C(reset)' --abbrev-commit
-    lg = !"git lg1"
     lol = log --graph --decorate --pretty=oneline --abbrev-commit --all # A more concise log output
+    r = !"GIT_NO_PAGER=1 git l -30"
+    ra = !"git r -all"
     st = status # Saves a few characters on one of the most-used commands
     unstage = reset HEAD -- # Unstage files
-
-    l = !." ~/.githelpers && pretty_git_log"
 [color]
     ui = true
 [core]
