@@ -22,13 +22,13 @@ function install_dotfiles() {
 	if test -d ~/.dotfiles &> /dev/null; then
 		printf "Skipping dotfiles clone directory already exists...\n"
 	else
-		printf "Intstalling dotfiles...\n"
+		printf "Installing dotfiles...\n"
 		git clone --recurse-submodules -j8 "git@github.com:rbaumgardner93/.dotfiles.git"
 	fi
 }
 
 function install_brew_packages() {
-	printf "Intstalling packages from brew...\n"
+	printf "Installing packages from brew...\n"
 	brew bundle --file=~/.dotfiles/brew/work/Brewfile
 }
 
