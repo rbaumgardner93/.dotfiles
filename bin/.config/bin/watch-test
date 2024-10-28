@@ -30,4 +30,4 @@ fi
 
 echo "Running tests from $base_file"
 
-LK_GREP="**/$base_file" yarn workspace "$slice_name" test:watch
+LK_GREP="**/$base_file" pnpm --filter "$slice_name" test:watch
