@@ -26,16 +26,28 @@ function install_brew() {
 	else
 		printf "Installing brew...\n"
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 		printf "Adding brew to PATH...\n"
 		echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 		eval "$(/opt/homebrew/bin/brew shellenv)"
 	fi
+}
 
+function install_git() {
 	if type git &> /dev/null; then
 		printf "Skipping git install git already installed...\n"
 	else
 		printf "Installing git...\n"
 		brew install git
+	fi
+
+	LOCAL_GIT_CONFIG=~/.gitconfig.local
+	if [ -f $LOCAL_GIT_CONFIG ]; then
+		printf "Local git config already added...\n"
+	else
+		read -p "Please enter your user name on github: " GITHUB_USER
+		printf "Adding user name and email to local gitconfig...\n"
+		echo -e "[user] \n\tname = $GIHTUB_USER\n\temail = $GITHUB_EMAIL" >> $LOCAL_GIT_CONFIG
 	fi
 }
 
@@ -59,6 +71,9 @@ function stow_dotfile_directories() {
 }
 
 function source_zsh() {
+	printf "Adding .zsh_private file...\n"
+	touch ~/.zsh_private
+
 	printf "Source zshrc...\n"
 	source ~/.zshrc
 }
