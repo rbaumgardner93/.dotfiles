@@ -1,6 +1,7 @@
 [submodule "nvim/.config/nvim"]
 	path = nvim/.config/nvim
 	url = git@github.com:rbaumgardner93/kickstart.nvim.git
+	branch = feature-personal-kickstart
 [submodule "nvim/.config/neovim"]
 	path = nvim/.config/neovim
 	url = git@github.com:neovim/neovim.git
