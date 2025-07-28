@@ -7,3 +7,4 @@
 	path = nvim/.config/nvim
 	url = git@github.com:rbaumgardner93/init.lua.git
 	branch = main
+	ignore = dirty
