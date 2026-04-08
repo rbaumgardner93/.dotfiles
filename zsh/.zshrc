@@ -37,8 +37,6 @@ if type bat &> /dev/null; then
     alias cat="bat"
 fi
 
-alias yw="yarn workspace"
-alias cat="bat"
 alias t="tmux"
 alias ts="tmux-sessionizer"
 alias e="exit"
@@ -102,10 +100,6 @@ fi;
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-
-# added by Webi for pyenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
