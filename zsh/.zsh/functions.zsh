@@ -22,8 +22,8 @@ function tmux() {
 function timezsh() {
   shell=${1-$SHELL}
 
-  for i in $(seq 1 10); do
-    /usr/bin/time $shell -i -c exit;
+  for i in {1..10}; do
+    /usr/bin/time "$shell" -i -c exit;
   done
 }
 
@@ -40,5 +40,9 @@ fo() {
 #
 # [p]ull request check[o]ut
 po() {
-  gh pr list --author "@me" | fzf --header "checkout PR" | awk '{print ${NF-5}}' | xargs git checkout
+  gh pr list --author "@me" | fzf --header "checkout PR" | awk '{print $1}' | xargs gh pr checkout
+}
+
+function update-plugins() {
+  git -C "$HOME/.dotfiles" submodule update --remote --merge zsh/.zsh/plugins/zsh-autosuggestions zsh/.zsh/plugins/zsh-syntax-highlighting
 }
