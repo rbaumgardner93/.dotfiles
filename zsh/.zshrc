@@ -1,5 +1,4 @@
 eval "$(fnm env --use-on-cd)"
-eval "$(zoxide init zsh)"
 
 export PATH="$HOME/.config/bin:$HOME/.config/neovim/bin:$HOME/go/bin:$HOME/bin:$HOME/.local/bin:$PATH"
 
@@ -83,6 +82,8 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
 SAVEHIST=10000
 setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_VERIFY SHARE_HISTORY
+
+eval "$(zoxide init zsh)"
 
 # Needs to initialize after everything else is set up
 eval "$(starship init zsh)"
